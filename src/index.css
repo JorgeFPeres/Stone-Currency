@@ -27,6 +27,7 @@ Variables
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+
   background: url('./assets/Mask.svg') no-repeat right top;
   height: 100vh;
 }
@@ -37,6 +38,7 @@ a {
 h2 {
   font-weight: 500;
   font-size: 18px;
+  color: var(--clr-darkgray);
 }
 
 p {
@@ -45,20 +47,25 @@ p {
 }
 
 .btn {
-  text-transform: uppercase;
-  background: var(--clr-green);
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  background: var(--clr-mediumgray2);
   color: var(--clr-white);
-  padding: 0.375rem 0.75rem;
-  display: inline-block;
-  font-family: sharon san;
-  font-weight: 600;
+  padding: 16px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
   transition: var(--transition);
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 8px 4px rgba(13, 17, 27, 0.08);
   border-radius: var(--radius);
-  border-color: 1px solid #008b57;
+  border: 1px solid #008b57;
 }
-.btn:hover {
+.active {
+  background: var(--clr-green);
+}
+.btn:hover,
+active:hover {
   background: var(--clr-darkgreen);
 }
