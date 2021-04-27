@@ -76,6 +76,14 @@ const Wrapper = styled.main`
       margin: 8px 0px;
     }
   }
+  @media screen and (max-width: 600px) {
+     {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 140px;
+      width: 330px;
+    }
+  }
 `
 
 export default Header
