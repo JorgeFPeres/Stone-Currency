@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-  <img alt="Stone Currency" src="public/stone.png">
+  <img alt="Stone Currency" src="public/Stone.png">
 </p>
 
 ---
