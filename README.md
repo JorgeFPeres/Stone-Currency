@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img alt="Stone Currency" title="Stone Currency" src="public/logo.png" />
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-layout">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  
+</p>
 
-## Available Scripts
+<p align="center">
+  <img  src="https://img.shields.io/static/v1?label=license&message=MIT&color=FFFFFF&labelColor=32B768" alt="License">
+  
+  <img src="https://img.shields.io/github/forks/JorgeFPeres/Stone_Currency?label=forks&message=MIT&color=FFFFFF&labelColor=32B768" alt="Forks">
 
-In the project directory, you can run:
+  <img src="https://img.shields.io/github/stars/JorgeFPeres/Stone_Currency?label=stars&message=MIT&color=FFFFFF&labelColor=32B768" alt="Stars">
+</p>
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <img alt="Stone Currency" src="public/stone.png">
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+## 🧪 Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was developed using the following technologies:
 
-### `yarn build`
+- [React Native](https://reactnative.dev/)
+- [Styled Components](https://styled-components.com/)
+- [Axio](https://www.npmjs.com/package/axios)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the project and access the folder
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$ git clone https://github.com/JorgeFPeres/Stone_Currency.git  && cd Stone_currency
+```
 
-### `yarn eject`
+Follow the steps below
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Install the dependencies
+$ yarn install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Start the project
+$ yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 💻 Project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Currency app to convert Dolar to Real including fees for any option (money or credit card). 
 
-## Learn More
+This is a tech challenge presented by **[@Stone](https://www.stone.com.br/)**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔖 Layout
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can view the project layout through the links below:
 
-### Code Splitting
+- [Layout](https://www.figma.com/file/y8IcDbllfaFAzXrEXR05PE/Teste---Front-Web-Stone?node-id=0%3A1)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Remembering that you need to have a [Figma](http://figma.com/) account to access it.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made with ❤️ by Jorge F Peres
