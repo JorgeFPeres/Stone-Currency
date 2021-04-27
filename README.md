@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Stone Currency" title="Stone Currency" src="public/logo.png" />
+    <img alt="Stone Currency" title="Stone Currency" src="src/assets/logo.svg" />
 </h1>
 
 <p align="center">
