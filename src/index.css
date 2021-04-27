@@ -27,7 +27,6 @@ Variables
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-
   background: url('./assets/Mask.svg') no-repeat right top;
   height: 100vh;
 }
@@ -68,4 +67,10 @@ p {
 .btn:hover,
 active:hover {
   background: var(--clr-darkgreen);
+}
+
+@media screen and (max-width: 882px) {
+  body {
+    background: none;
+  }
 }
