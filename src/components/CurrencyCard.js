@@ -19,7 +19,7 @@ const GreenRadio = withStyles({
 })((props) => <Radio color='default' {...props} />)
 
 const CurrencyCard = () => {
-  const [value, setValue] = React.useState('female')
+  const [value, setValue] = React.useState('money')
 
   const handleChange = (event) => {
     setValue(event.target.value)
@@ -51,18 +51,18 @@ const CurrencyCard = () => {
         <FormControl component='fieldset'>
           <RadioGroup
             row
-            aria-label='gender'
-            name='gender1'
+            aria-label='type of buy'
+            name='type of buy'
             value={value}
             onChange={handleChange}
           >
             <FormControlLabel
-              value='female'
+              value='money'
               control={<GreenRadio />}
               label={<p className='radio-font'>Dinheiro</p>}
             />
             <FormControlLabel
-              value='male'
+              value='card'
               control={<GreenRadio />}
               label={<p className='radio-font'>Cartão</p>}
             />
@@ -78,11 +78,10 @@ const CurrencyCard = () => {
 }
 
 const Wrapper = styled.div`
-  
-    position: absolute;
-    left: 64px;
-    top: 250px;
-  
+  position: absolute;
+  left: 64px;
+  top: 250px;
+
   .form-container {
     display: flex;
     flex-direction: row;
@@ -117,7 +116,10 @@ const Wrapper = styled.div`
       padding: 7px;
     }
   }
-
+  @media screen and (max-width: 600px) {
+     {
+      top: 300px;
+    }
   }
 `
 
