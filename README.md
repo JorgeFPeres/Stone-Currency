@@ -32,7 +32,8 @@ This project was developed using the following technologies:
 
 - [React Native](https://reactnative.dev/)
 - [Styled Components](https://styled-components.com/)
-- [Axio](https://www.npmjs.com/package/axios)
+- [Axios](https://www.npmjs.com/package/axios)
+- [date-fns](https://date-fns.org/)
 
 ## 🚀 Getting started
 
@@ -54,7 +55,7 @@ $ yarn start
 
 ## 💻 Project
 
-Currency app to convert Dolar to Real including fees for any option (money or credit card). 
+Currency app to convert Dolar to Real including fees for any option (money or credit card).
 
 This is a tech challenge presented by **[@Stone](https://www.stone.com.br/)**.
 
