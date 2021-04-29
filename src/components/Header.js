@@ -82,6 +82,8 @@ const Wrapper = styled.main`
       align-items: flex-start;
       height: 140px;
       width: 330px;
+      left: 20px;
+      top: 30px;
     }
   }
 `
