@@ -98,9 +98,14 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    top: 300px;
     left: 20px;
-    top: 240px;
+    top: 220px;
+    .form-container {
+      flex-direction: column;
+      div {
+        margin-top: 10px;
+      }
+    }
   }
 `
 
