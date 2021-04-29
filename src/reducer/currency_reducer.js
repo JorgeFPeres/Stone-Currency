@@ -37,7 +37,7 @@ const currency_reducer = (state, action) => {
   if (action.type === CALCULATE_EXCHANGE) {
     const { isCash, dolar, fee, currencyValue } = state
     if (!dolar || !fee) {
-      alert('Preencha valor e taxa e tente novamente!!!')
+      alert('Preencha o valor e a taxa e tente novamente!!!')
       return { ...state, showResults: false }
     }
     if (dolar > 10000000 || fee > 100) {

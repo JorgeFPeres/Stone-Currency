@@ -28,7 +28,7 @@ const ResultCard = () => {
         <p>
           Compra no {`${isCash ? 'dinheiro' : 'cartão'}`} e taxa de {fee} %
         </p>
-        <p>Cotação do dólar: $1,00 = R$ {currencyValue.toFixed(2)}</p>
+        <p>Cotação do dólar: $ 1,00 = R$ {currencyValue.toFixed(2)}</p>
       </div>
     </Wrapper>
   )
