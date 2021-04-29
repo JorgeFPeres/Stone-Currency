@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useContext, useEffect, useReducer } from 'react'
 import reducer from '../reducer/currency_reducer'
 import { api } from '../services/api'
@@ -11,7 +10,6 @@ import {
   CARD_SELECTED,
   CALCULATE_EXCHANGE,
   CLEAR_STATES,
-  ALERT_EMPTY_FORM,
 } from '../utils/actions'
 
 const initialState = {
@@ -22,8 +20,6 @@ const initialState = {
   dolar: 0,
   fee: 0,
   showResults: false,
-  model_error: false,
-  alert: { show: false, msg: '' },
 }
 
 const CurrencyContext = React.createContext()
@@ -84,7 +80,7 @@ export const CurrencyProvider = ({ children }) => {
     </CurrencyContext.Provider>
   )
 }
-// make sure use
+
 export const useCurrencyContext = () => {
   return useContext(CurrencyContext)
 }

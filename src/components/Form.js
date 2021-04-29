@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Input = ({ value, onChange, monetary }) => {
+const Input = ({ value, onChange, money }) => {
   return (
     <Container>
       <InputText
         type='text'
         value={
-          monetary
+          money
             ? `$ ${value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
             : `% ${value.toFixed(1)}`
         }

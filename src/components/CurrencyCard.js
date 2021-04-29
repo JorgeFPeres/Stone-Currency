@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import Input from './Form'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import SyncAltIcon from '@material-ui/icons/SyncAlt'
 import { useCurrencyContext } from '../context/currency_context'
 
-import Input from './Form'
 import { GreenRadio } from '../utils/helpers'
 
 const CurrencyCard = () => {
@@ -26,7 +26,7 @@ const CurrencyCard = () => {
       <div className='form-container'>
         <div>
           <h2>Dólar</h2>
-          <Input monetary value={dolar} onChange={onChangeDolar} />
+          <Input money value={dolar} onChange={onChangeDolar} />
         </div>
         <div>
           <h2>Taxa do Estado</h2>
@@ -36,7 +36,7 @@ const CurrencyCard = () => {
       <div>
         <h2>Tipo de Compra</h2>
         <FormControl component='fieldset'>
-          <RadioGroup row aria-label='MoneyOrCard' name='MoneyOrCard' che>
+          <RadioGroup row aria-label='MoneyOrCard' name='MoneyOrCard'>
             <FormControlLabel
               checked={isCash}
               control={<GreenRadio />}

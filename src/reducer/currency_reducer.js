@@ -1,5 +1,4 @@
 import { transformRawNumber } from '../utils/helpers'
-import showAlert from '../utils/Alert'
 import {
   GET_CURRENCY_ERROR,
   GET_CURRENCY_SUCCESS,
@@ -9,7 +8,7 @@ import {
   CARD_SELECTED,
   CALCULATE_EXCHANGE,
   CLEAR_STATES,
-  ALERT_EMPTY_FORM,
+  SHOW_ALERT,
 } from '../utils/actions'
 
 const currency_reducer = (state, action) => {
@@ -38,23 +37,35 @@ const currency_reducer = (state, action) => {
   if (action.type === CALCULATE_EXCHANGE) {
     const { isCash, dolar, fee, currencyValue } = state
     if (!dolar || !fee) {
-      return { ...state, showResults: false, model_error: true }
+      alert('Preencha valor e taxa e tente novamente!!!')
+      return { ...state, showResults: false }
     }
-    if (isCash) {
-      const feeValue = dolar * (fee / 100)
-      const IOFValue = 0.011
-      const realsemimposto = (dolar + feeValue) * currencyValue
-      const converted = realsemimposto * (1 + IOFValue)
-      return { ...state, converted, showResults: true }
-    }
-    if (!isCash) {
-      const feeValue = dolar * (fee / 100)
-      const IOFValue = 0.064
-      const realsemimposto = (dolar + feeValue) * currencyValue
-      const converted = realsemimposto * (1 + IOFValue)
-      return { ...state, converted, showResults: true }
+    if (dolar > 10000000 || fee > 100) {
+      alert(
+        'Ensira um valor menor!!! \nLimite dolar: 10.000.000 \nLimite taxa:100%'
+      )
+      return { ...state, showResults: false, dolar: 0, fee: 0 }
+    } else {
+      if (isCash) {
+        const feeValue = dolar * (fee / 100)
+        const IOFValue = 0.011
+        const realsemimposto = (dolar + feeValue) * currencyValue
+        const converted = realsemimposto * (1 + IOFValue)
+        return { ...state, converted, showResults: true }
+      }
+      if (!isCash) {
+        const feeValue = dolar * (fee / 100)
+        const IOFValue = 0.064
+        const realsemimposto = (dolar + feeValue) * currencyValue
+        const converted = realsemimposto * (1 + IOFValue)
+        return { ...state, converted, showResults: true }
+      }
     }
   }
+  if (action.type === SHOW_ALERT) {
+    return { ...state }
+  }
+
   if (action.type === CLEAR_STATES) {
     return {
       ...state,
@@ -65,7 +76,6 @@ const currency_reducer = (state, action) => {
     }
   }
 
-  return state
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 
