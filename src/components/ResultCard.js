@@ -1,11 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useCurrencyContext } from '../context/currency_context'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 const ResultCard = () => {
+  const {
+    currencyValue,
+    fee,
+    converted,
+    clearState,
+    isCash,
+  } = useCurrencyContext()
+
   return (
     <Wrapper>
-      <button className='btn'>
+      <button className='btn' onClick={clearState}>
         <span>
           <ArrowBackIcon fontSize={'small'} />{' '}
         </span>
@@ -13,11 +22,13 @@ const ResultCard = () => {
       </button>
       <div className='result-container'>
         <h2>O resultado do cálculo é</h2>
-        <h1>R$ 240,56</h1>
+        <h1>{converted.toFixed(2)}</h1>
       </div>
       <div>
-        <p>Compra no dinheiro e taxa de 5.3%</p>
-        <p>Cotação do dólar: $1,00 = R$ 5,20</p>
+        <p>
+          Compra no {`${isCash ? 'dinheiro' : 'cartão'}`} e taxa de {fee}%
+        </p>
+        <p>Cotação do dólar: $1,00 = R$ {currencyValue.toFixed(2)}</p>
       </div>
     </Wrapper>
   )
@@ -62,9 +73,7 @@ const Wrapper = styled.div`
     color: var(--clr-mediumgray);
   }
   @media screen and (max-width: 600px) {
-     {
-      top: 300px;
-    }
+    top: 300px;
   }
 `
 
