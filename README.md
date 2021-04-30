@@ -40,7 +40,7 @@ This project was developed using the following technologies:
 Clone the project and access the folder
 
 ```bash
-$ git clone https://github.com/JorgeFPeres/Stone_Currency.git  && cd Stone_currency
+$ git clone https://github.com/JorgeFPeres/Stone_Currency.git  && cd Stone-Currency
 ```
 
 Follow the steps below
@@ -55,7 +55,8 @@ $ yarn start
 
 ## 💻 Project
 
-Currency app to convert Dolar to Real including fees for any option (money or credit card).
+[Stone Currency](https://currencystone.netlify.app/)
+Currency app to convert Dolar to Real including tax and IOF for any option (money or credit card).
 
 This is a tech challenge presented by **[@Stone](https://www.stone.com.br/)**.
 
