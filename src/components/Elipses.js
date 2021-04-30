@@ -4,12 +4,12 @@ import styled from 'styled-components'
 const Elipses = () => {
   return (
     <Wrapper>
-      <article className='teste'>
+      <div className='elipse-container'>
         <div className='elipse circle1'></div>
         <div className='elipse circle2'></div>
         <div className='elipse circle3'></div>
         <div className='elipse circle4'></div>
-      </article>
+      </div>
     </Wrapper>
   )
 }
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   top: 377px;
   left: calc(100% - 418px);
 
-  article {
+  .elipse-container {
     display: flex;
     align-items: center;
     justify-content: center;

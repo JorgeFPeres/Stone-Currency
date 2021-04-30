@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="pt-BR"><script type="module" src="chrome-extension://jdkknkkbebbapilgoeccciglkfbmbnfm/hook.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="Stone Currency" content="Faça sua cotação!">
+
+    <title>Stone Currency</title>
+  <style>/*
+=============== 
+Variables
+===============
+*/
+:root {
+  --clr-white: #fff;
+  --clr-green: #00ab63;
+  --clr-darkgreen: #008b57;
+  --clr-darkgray: #2e3742;
+  --clr-mediumgray: #6e7e90;
+  --clr-darkgray2: #45505e;
+  --clr-mediumgray2: #8c9cad;
+  --radius: 8px;
+  --shadow: drop-shadow(0px 8px 4px rgba(13, 17, 27, 0.08));
+  --transition: all 0.3s linear;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: url(/static/media/Mask.b01e1a7c.png) no-repeat right top;
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--clr-darkgray);
+}
+
+p {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  background: var(--clr-green);
+  color: var(--clr-white);
+  padding: 16px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  transition: var(--transition);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 4px rgba(13, 17, 27, 0.08);
+  border-radius: var(--radius);
+  border: 1px solid #008b57;
+}
+.active {
+  background: var(--clr-green);
+}
+.btn:hover {
+  background: var(--clr-darkgreen);
+}
+
+@media screen and (max-width: 882px) {
+  body {
+    background: none;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvaW5kZXguY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0NBSUM7QUFDRDtFQUNFLGlCQUFpQjtFQUNqQixvQkFBb0I7RUFDcEIsd0JBQXdCO0VBQ3hCLHVCQUF1QjtFQUN2Qix5QkFBeUI7RUFDekIsd0JBQXdCO0VBQ3hCLDBCQUEwQjtFQUMxQixhQUFhO0VBQ2IseURBQXlEO0VBQ3pELDZCQUE2QjtBQUMvQjs7QUFFQTs7O0VBR0UsU0FBUztFQUNULFVBQVU7RUFDVixzQkFBc0I7QUFDeEI7O0FBRUE7RUFDRSxTQUFTO0VBQ1QsaUNBQWlDO0VBQ2pDLHVFQUF3RDtFQUN4RCxhQUFhO0FBQ2Y7QUFDQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsMEJBQTBCO0FBQzVCOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLDBCQUEwQjtFQUMxQiw0QkFBNEI7RUFDNUIsdUJBQXVCO0VBQ3ZCLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsZ0JBQWdCO0VBQ2hCLDZCQUE2QjtFQUM3QixlQUFlO0VBQ2YsZUFBZTtFQUNmLDRDQUE0QztFQUM1Qyw0QkFBNEI7RUFDNUIseUJBQXlCO0FBQzNCO0FBQ0E7RUFDRSw0QkFBNEI7QUFDOUI7QUFDQTtFQUNFLGdDQUFnQztBQUNsQzs7QUFFQTtFQUNFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuPT09PT09PT09PT09PT09IFxuVmFyaWFibGVzXG49PT09PT09PT09PT09PT1cbiovXG46cm9vdCB7XG4gIC0tY2xyLXdoaXRlOiAjZmZmO1xuICAtLWNsci1ncmVlbjogIzAwYWI2MztcbiAgLS1jbHItZGFya2dyZWVuOiAjMDA4YjU3O1xuICAtLWNsci1kYXJrZ3JheTogIzJlMzc0MjtcbiAgLS1jbHItbWVkaXVtZ3JheTogIzZlN2U5MDtcbiAgLS1jbHItZGFya2dyYXkyOiAjNDU1MDVlO1xuICAtLWNsci1tZWRpdW1ncmF5MjogIzhjOWNhZDtcbiAgLS1yYWRpdXM6IDhweDtcbiAgLS1zaGFkb3c6IGRyb3Atc2hhZG93KDBweCA4cHggNHB4IHJnYmEoMTMsIDE3LCAyNywgMC4wOCkpO1xuICAtLXRyYW5zaXRpb246IGFsbCAwLjNzIGxpbmVhcjtcbn1cblxuKixcbjo6YWZ0ZXIsXG46OmJlZm9yZSB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuYm9keSB7XG4gIG1hcmdpbjogMDtcbiAgZm9udC1mYW1pbHk6ICdSb2JvdG8nLCBzYW5zLXNlcmlmO1xuICBiYWNrZ3JvdW5kOiB1cmwoJy4vYXNzZXRzL01hc2sucG5nJykgbm8tcmVwZWF0IHJpZ2h0IHRvcDtcbiAgaGVpZ2h0OiAxMDB2aDtcbn1cbmEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59XG5cbmgyIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgZm9udC1zaXplOiAxOHB4O1xuICBjb2xvcjogdmFyKC0tY2xyLWRhcmtncmF5KTtcbn1cblxucCB7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuLmJ0biB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHRleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO1xuICBiYWNrZ3JvdW5kOiB2YXIoLS1jbHItZ3JlZW4pO1xuICBjb2xvcjogdmFyKC0tY2xyLXdoaXRlKTtcbiAgcGFkZGluZzogMTZweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuOHB4O1xuICBmb250LXdlaWdodDogNTAwO1xuICB0cmFuc2l0aW9uOiB2YXIoLS10cmFuc2l0aW9uKTtcbiAgZm9udC1zaXplOiAxcmVtO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGJveC1zaGFkb3c6IDAgOHB4IDRweCByZ2JhKDEzLCAxNywgMjcsIDAuMDgpO1xuICBib3JkZXItcmFkaXVzOiB2YXIoLS1yYWRpdXMpO1xuICBib3JkZXI6IDFweCBzb2xpZCAjMDA4YjU3O1xufVxuLmFjdGl2ZSB7XG4gIGJhY2tncm91bmQ6IHZhcigtLWNsci1ncmVlbik7XG59XG4uYnRuOmhvdmVyIHtcbiAgYmFja2dyb3VuZDogdmFyKC0tY2xyLWRhcmtncmVlbik7XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDg4MnB4KSB7XG4gIGJvZHkge1xuICAgIGJhY2tncm91bmQ6IG5vbmU7XG4gIH1cbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style data-styled="active" data-styled-version="5.2.3">.dtHdXy{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:168px;margin-right:20px;}.grGGaN{padding:15px;margin-right:1.5rem;margin-top:3px;width:168px;height:56px;border:1px solid #d7e0eb;border-radius:4px;-webkit-filter:var(--shadow);filter:var(--shadow);}.grGGaN::-webkit-input-placeholder{opacity:0.5;}.grGGaN::-moz-placeholder{opacity:0.5;}.grGGaN:-ms-input-placeholder{opacity:0.5;}.grGGaN::placeholder{opacity:0.5;}.eYYuAp{position:absolute;left:64px;top:250px;}.eYYuAp .form-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;padding-bottom:32px;}.eYYuAp .label-radio{padding-top:10px;font-size:12px;line-height:24px;}.eYYuAp button{margin-top:25px;}.eYYuAp button span{padding:7px;}.eYYuAp .btn-disable{cursor:default;}.eYYuAp .btn-disable:hover{background:var(--clr-mediumgray2);}@media screen and (max-width:600px){.eYYuAp{left:20px;top:220px;}.eYYuAp .form-container{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.eYYuAp .form-container div{margin-top:10px;}}.bOSQV{position:absolute;width:538px;left:64px;top:64px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}.bOSQV span{margin:0 15px;}.bOSQV .container-logo{height:81px;}.bOSQV .logo{margin-top:10px;width:163px;height:43.2px;}.bOSQV .container-currency{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}.bOSQV .underline{margin-top:4px;width:83px;height:4px;background:var(--clr-green);opacity:0.32;}.bOSQV .currency{color:var(--clr-green);}.bOSQV .date-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.bOSQV .date-container .morning-star{color:var(--clr-mediumgray2);}.bOSQV .date-container .date{color:var(--clr-darkgray2);margin:8px 0px;}@media screen and (max-width:600px){.bOSQV{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;height:140px;width:330px;left:20px;top:30px;}}.iheoVZ{position:absolute;top:377px;left:calc(100% - 418px);}.iheoVZ article{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}.iheoVZ .elipse{position:absolute;border-radius:50%;box-sizing:border-box;}.iheoVZ .circle1{width:36px;height:36px;background:#00ab63;}.iheoVZ .circle2{width:104px;height:104px;border:4px solid #008b57;border-radius:50%;opacity:0.2;}.iheoVZ .circle3{width:213px;height:213px;opacity:0.7;border:4px solid #008b57;}.iheoVZ .circle4{width:310px;height:310px;opacity:0.2;border:4px solid #008b57;}@media screen and (max-width:992px){.iheoVZ article{display:none;}}</style><style data-jss="" data-meta="MuiFormGroup">
+.MuiFormGroup-root {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.MuiFormGroup-row {
+  flex-direction: row;
+}
+</style><style data-jss="" data-meta="MuiFormControl">
+.MuiFormControl-root {
+  border: 0;
+  margin: 0;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
+  vertical-align: top;
+}
+.MuiFormControl-marginNormal {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.MuiFormControl-marginDense {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+.MuiFormControl-fullWidth {
+  width: 100%;
+}
+</style><style data-jss="" data-meta="MuiTypography">
+.MuiTypography-root {
+  margin: 0;
+}
+.MuiTypography-body2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+}
+.MuiTypography-body1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-caption {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+}
+.MuiTypography-button {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+}
+.MuiTypography-h1 {
+  font-size: 6rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+}
+.MuiTypography-h2 {
+  font-size: 3.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+}
+.MuiTypography-h3 {
+  font-size: 3rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.167;
+  letter-spacing: 0em;
+}
+.MuiTypography-h4 {
+  font-size: 2.125rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+}
+.MuiTypography-h5 {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0em;
+}
+.MuiTypography-h6 {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+.MuiTypography-subtitle1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-subtitle2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+}
+.MuiTypography-overline {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 2.66;
+  letter-spacing: 0.08333em;
+  text-transform: uppercase;
+}
+.MuiTypography-srOnly {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+.MuiTypography-alignLeft {
+  text-align: left;
+}
+.MuiTypography-alignCenter {
+  text-align: center;
+}
+.MuiTypography-alignRight {
+  text-align: right;
+}
+.MuiTypography-alignJustify {
+  text-align: justify;
+}
+.MuiTypography-noWrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.MuiTypography-gutterBottom {
+  margin-bottom: 0.35em;
+}
+.MuiTypography-paragraph {
+  margin-bottom: 16px;
+}
+.MuiTypography-colorInherit {
+  color: inherit;
+}
+.MuiTypography-colorPrimary {
+  color: #3f51b5;
+}
+.MuiTypography-colorSecondary {
+  color: #f50057;
+}
+.MuiTypography-colorTextPrimary {
+  color: rgba(0, 0, 0, 0.87);
+}
+.MuiTypography-colorTextSecondary {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiTypography-colorError {
+  color: #f44336;
+}
+.MuiTypography-displayInline {
+  display: inline;
+}
+.MuiTypography-displayBlock {
+  display: block;
+}
+</style><style data-jss="" data-meta="MuiFormControlLabel">
+.MuiFormControlLabel-root {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-left: -11px;
+  margin-right: 16px;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiFormControlLabel-root.Mui-disabled {
+  cursor: default;
+}
+.MuiFormControlLabel-labelPlacementStart {
+  margin-left: 16px;
+  margin-right: -11px;
+  flex-direction: row-reverse;
+}
+.MuiFormControlLabel-labelPlacementTop {
+  margin-left: 16px;
+  flex-direction: column-reverse;
+}
+.MuiFormControlLabel-labelPlacementBottom {
+  margin-left: 16px;
+  flex-direction: column;
+}
+.MuiFormControlLabel-label.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+</style><style data-jss="" data-meta="MuiSvgIcon">
+.MuiSvgIcon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #3f51b5;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #f50057;
+}
+.MuiSvgIcon-colorAction {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiSvgIcon-colorError {
+  color: #f44336;
+}
+.MuiSvgIcon-colorDisabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: inherit;
+}
+.MuiSvgIcon-fontSizeSmall {
+  font-size: 1.25rem;
+}
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+}
+</style><style data-jss="" data-meta="MuiTouchRipple">
+.MuiTouchRipple-root {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.MuiTouchRipple-ripple {
+  opacity: 0;
+  position: absolute;
+}
+.MuiTouchRipple-rippleVisible {
+  opacity: 0.3;
+  animation: MuiTouchRipple-keyframes-enter 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+.MuiTouchRipple-ripplePulsate {
+  animation-duration: 200ms;
+}
+.MuiTouchRipple-child {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+.MuiTouchRipple-childLeaving {
+  opacity: 0;
+  animation: MuiTouchRipple-keyframes-exit 550ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.MuiTouchRipple-childPulsate {
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: MuiTouchRipple-keyframes-pulsate 2500ms cubic-bezier(0.4, 0, 0.2, 1) 200ms infinite;
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-enter {
+  0% {
+    opacity: 0.1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style><style data-jss="" data-meta="MuiButtonBase">
+.MuiButtonBase-root {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  user-select: none;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  justify-content: center;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiButtonBase-root::-moz-focus-inner {
+  border-style: none;
+}
+.MuiButtonBase-root.Mui-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+@media print {
+  .MuiButtonBase-root {
+    -webkit-print-color-adjust: exact;
+  }
+}
+</style><style data-jss="" data-meta="MuiIconButton">
+.MuiIconButton-root {
+  flex: 0 0 auto;
+  color: rgba(0, 0, 0, 0.54);
+  padding: 12px;
+  overflow: visible;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 50%;
+}
+.MuiIconButton-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.MuiIconButton-root.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: transparent;
+}
+@media (hover: none) {
+  .MuiIconButton-root:hover {
+    background-color: transparent;
+  }
+}
+.MuiIconButton-edgeStart {
+  margin-left: -12px;
+}
+.MuiIconButton-sizeSmall.MuiIconButton-edgeStart {
+  margin-left: -3px;
+}
+.MuiIconButton-edgeEnd {
+  margin-right: -12px;
+}
+.MuiIconButton-sizeSmall.MuiIconButton-edgeEnd {
+  margin-right: -3px;
+}
+.MuiIconButton-colorInherit {
+  color: inherit;
+}
+.MuiIconButton-colorPrimary {
+  color: #3f51b5;
+}
+.MuiIconButton-colorPrimary:hover {
+  background-color: rgba(63, 81, 181, 0.04);
+}
+@media (hover: none) {
+  .MuiIconButton-colorPrimary:hover {
+    background-color: transparent;
+  }
+}
+.MuiIconButton-colorSecondary {
+  color: #f50057;
+}
+.MuiIconButton-colorSecondary:hover {
+  background-color: rgba(245, 0, 87, 0.04);
+}
+@media (hover: none) {
+  .MuiIconButton-colorSecondary:hover {
+    background-color: transparent;
+  }
+}
+.MuiIconButton-sizeSmall {
+  padding: 3px;
+  font-size: 1.125rem;
+}
+.MuiIconButton-label {
+  width: 100%;
+  display: flex;
+  align-items: inherit;
+  justify-content: inherit;
+}
+</style><style data-jss="" data-meta="PrivateSwitchBase">
+.PrivateSwitchBase-root-3 {
+  padding: 9px;
+}
+.PrivateSwitchBase-input-6 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: inherit;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+}
+</style><style data-jss="" data-meta="PrivateRadioButtonIcon">
+.PrivateRadioButtonIcon-root-7 {
+  display: flex;
+  position: relative;
+}
+.PrivateRadioButtonIcon-root-7.PrivateRadioButtonIcon-checked-9 .PrivateRadioButtonIcon-layer-8 {
+  transform: scale(1);
+  transition: transform 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+.PrivateRadioButtonIcon-layer-8 {
+  left: 0;
+  position: absolute;
+  transform: scale(0);
+  transition: transform 150ms cubic-bezier(0.4, 0, 1, 1) 0ms;
+}
+</style><style data-jss="" data-meta="MuiRadio">
+.MuiRadio-root {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiRadio-colorPrimary.Mui-checked {
+  color: #3f51b5;
+}
+.MuiRadio-colorPrimary.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiRadio-colorPrimary.Mui-checked:hover {
+  background-color: rgba(63, 81, 181, 0.04);
+}
+@media (hover: none) {
+  .MuiRadio-colorPrimary.Mui-checked:hover {
+    background-color: transparent;
+  }
+}
+.MuiRadio-colorSecondary.Mui-checked {
+  color: #f50057;
+}
+.MuiRadio-colorSecondary.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiRadio-colorSecondary.Mui-checked:hover {
+  background-color: rgba(245, 0, 87, 0.04);
+}
+@media (hover: none) {
+  .MuiRadio-colorSecondary.Mui-checked:hover {
+    background-color: transparent;
+  }
+}
+</style><style data-jss="" data-meta="Component">
+.Component-root-1 {
+  color: #bdbdbd;
+}
+.Component-root-1.Component-checked-2 {
+  color: #43a047;
+}
+</style><script charset="utf-8" src="./Stone Currency_files/main.103595f3537c3e034719.hot-update.js"></script></head>
+  <body>
+    <noscript>Faça sua cotação!</noscript>
+    <div id="root"><main class="sc-hKwCoD bOSQV"><div class="container-logo"><img src="./Stone Currency_files/logo.41edd25c.svg" alt="stone" class="logo"><div class="container-currency"><div class="underline"></div><h2 class="currency">Currency</h2></div></div><div class="date-container"><h2 class="date"> 30 de abril 2021 <span>|</span> 10:27 UTC</h2><p class="morning-star">Dados de câmbio disponibilizados pela Morningstar.</p></div></main><div class="sc-dkPtyc eYYuAp"><div class="form-container"><div><h2>Dólar</h2><div class="sc-bdvvaa dtHdXy"><input type="text" class="sc-gsDJrp grGGaN" value="$ 0.00"></div></div><div><h2>Taxa do Estado</h2><div class="sc-bdvvaa dtHdXy"><input type="text" class="sc-gsDJrp grGGaN" value="% 0.0"></div></div></div><div><h2>Tipo de Compra</h2><fieldset class="MuiFormControl-root"><div class="MuiFormGroup-root MuiFormGroup-row" role="radiogroup" aria-label="MoneyOrCard"><label class="MuiFormControlLabel-root"><span class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root Component-root-1 PrivateSwitchBase-checked-4 Mui-checked Component-checked-2" aria-disabled="false"><span class="MuiIconButton-label"><input class="PrivateSwitchBase-input-6" name="MoneyOrCard" type="radio" value="" checked=""><div class="PrivateRadioButtonIcon-root-7 PrivateRadioButtonIcon-checked-9"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></svg><svg class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"></path></svg></div></span><span class="MuiTouchRipple-root"></span></span><span class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"><p class="label-radio">Dinheiro</p></span></label><label class="MuiFormControlLabel-root"><span class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root Component-root-1" aria-disabled="false"><span class="MuiIconButton-label"><input class="PrivateSwitchBase-input-6" name="MoneyOrCard" type="radio" value=""><div class="PrivateRadioButtonIcon-root-7"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></svg><svg class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"></path></svg></div></span><span class="MuiTouchRipple-root"></span></span><span class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"><p class="label-radio">Cartão</p></span></label></div></fieldset></div><button class="btn btn-disable" type="submit"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 8l-4-4v3H3v2h15v3l4-4zM2 16l4 4v-3h15v-2H6v-3l-4 4z"></path></svg> <span></span>Converter</button></div><div class="sc-jRQAMF iheoVZ"><article class="teste"><div class="elipse circle1"></div><div class="elipse circle2"></div><div class="elipse circle3"></div><div class="elipse circle4"></div></article></div></div>
+  <script src="./Stone Currency_files/bundle.js"></script><script src="./Stone Currency_files/vendors_main.chunk.js"></script><script src="./Stone Currency_files/main.chunk.js"></script>
+
+</body></html>

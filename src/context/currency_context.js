@@ -15,11 +15,14 @@ import {
 const initialState = {
   isFormEmpty: true,
   currencyValue: 0,
-  converted: 0,
+  realWithTax: 0,
   isCash: true,
-  dolar: 0,
-  fee: 0,
+  inputDolar: 0,
+  stateFee: 0,
   showResults: false,
+  realNoTax: 0,
+  dolarWithTax: 0,
+  currencyError: false,
 }
 
 const CurrencyContext = React.createContext()
@@ -41,11 +44,11 @@ export const CurrencyProvider = ({ children }) => {
     fetchCurrency()
   }, [])
 
-  const onChangeDolar = (value) => {
+  const getDolar = (value) => {
     dispatch({ type: GET_DOLAR, payload: value })
   }
 
-  const onChangeFee = (value) => {
+  const getFee = (value) => {
     dispatch({ type: GET_FEE, payload: value })
   }
 
@@ -68,8 +71,8 @@ export const CurrencyProvider = ({ children }) => {
     <CurrencyContext.Provider
       value={{
         ...state,
-        onChangeDolar,
-        onChangeFee,
+        getDolar,
+        getFee,
         setIsCash,
         setIsCard,
         handleSubmit,

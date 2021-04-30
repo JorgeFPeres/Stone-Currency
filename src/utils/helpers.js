@@ -2,21 +2,21 @@ import Radio from '@material-ui/core/Radio'
 import { green, grey } from '@material-ui/core/colors'
 import { withStyles } from '@material-ui/core/styles'
 
+// Remove the symbol $
 export function transformRawNumber(value) {
   return value.replace(/\D/g, '')
 }
 
+// Format the final value to R$
 export const formatPrice = (number) => {
-  const newNumber = Intl.NumberFormat('en-US', {
+  const newNumber = Intl.NumberFormat([], {
     style: 'currency',
-    currency: 'USD',
-    // currency: 'BRL'
-  }).format(number / 100)
+    currency: 'BRL',
+  }).format(number)
   return newNumber
 }
 
-export const getUniqueValues = () => {}
-
+// Change the radio button color to green
 export const GreenRadio = withStyles({
   root: {
     color: grey[400],

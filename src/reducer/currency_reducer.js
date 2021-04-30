@@ -1,4 +1,5 @@
-import { transformRawNumber } from '../utils/helpers'
+import { transformRawNumber, formatPrice } from '../utils/helpers'
+
 import {
   GET_CURRENCY_ERROR,
   GET_CURRENCY_SUCCESS,
@@ -16,17 +17,17 @@ const currency_reducer = (state, action) => {
     return { ...state, currencyValue: action.payload }
   }
   if (action.type === GET_CURRENCY_ERROR) {
-    return { ...state, currency_error: true }
+    return { ...state, currencyError: true }
   }
   if (action.type === GET_DOLAR) {
     const rawNumber = Number(transformRawNumber(action.payload)) / 100
-    const dolar = Number(rawNumber.toFixed(2))
-    return { ...state, dolar, isformDolarEmpty: false }
+    const inputDolar = Number(rawNumber.toFixed(2))
+    return { ...state, inputDolar, isformDolarEmpty: false }
   }
   if (action.type === GET_FEE) {
     const rawNumber = Number(transformRawNumber(action.payload)) / 10
-    const fee = Number(rawNumber.toFixed(1))
-    return { ...state, fee, isformFeeEmpty: false }
+    const stateFee = Number(rawNumber.toFixed(1))
+    return { ...state, stateFee, isformFeeEmpty: false }
   }
   if (action.type === CASH_SELECTED) {
     return { ...state, isCash: true }
@@ -35,30 +36,27 @@ const currency_reducer = (state, action) => {
     return { ...state, isCash: false }
   }
   if (action.type === CALCULATE_EXCHANGE) {
-    const { isCash, dolar, fee, currencyValue } = state
-    if (!dolar || !fee) {
+    const { isCash, inputDolar, stateFee, currencyValue } = state
+    if (!inputDolar || !stateFee) {
       alert('Preencha o valor e a taxa e tente novamente!!!')
       return { ...state, showResults: false }
     }
-    if (dolar > 10000000 || fee > 100) {
+    if (inputDolar > 10000000 || stateFee > 100) {
       alert(
         'Ensira um valor menor!!! \nLimite dolar: 10.000.000 \nLimite taxa:100%'
       )
-      return { ...state, showResults: false, dolar: 0, fee: 0 }
+      return { ...state, showResults: false, inputDolar: 0, stateFee: 0 }
     } else {
-      if (isCash) {
-        const feeValue = dolar * (fee / 100)
-        const IOFValue = 0.011
-        const realsemimposto = (dolar + feeValue) * currencyValue
-        const converted = realsemimposto * (1 + IOFValue)
-        return { ...state, converted, showResults: true }
-      }
-      if (!isCash) {
-        const feeValue = dolar * (fee / 100)
-        const IOFValue = 0.064
-        const realsemimposto = (dolar + feeValue) * currencyValue
-        const converted = realsemimposto * (1 + IOFValue)
-        return { ...state, converted, showResults: true }
+      const dolarWithTax = inputDolar + inputDolar * (stateFee / 100)
+      const IOFValue = isCash ? 0.011 : 0.064
+      const realNoTax = dolarWithTax * currencyValue
+      const realWithTax = formatPrice(realNoTax * (1 + IOFValue))
+      return {
+        ...state,
+        realWithTax,
+        realNoTax,
+        dolarWithTax,
+        showResults: true,
       }
     }
   }
@@ -69,10 +67,12 @@ const currency_reducer = (state, action) => {
   if (action.type === CLEAR_STATES) {
     return {
       ...state,
-      dolar: 0,
-      fee: 0,
+      inputDolar: 0,
+      stateFee: 0,
       isCash: true,
       showResults: false,
+      realNoTax: 0,
+      dolarWithTax: 0,
     }
   }
 

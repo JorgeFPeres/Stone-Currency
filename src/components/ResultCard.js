@@ -5,11 +5,14 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 const ResultCard = () => {
   const {
+    inputDolar,
     currencyValue,
-    fee,
-    converted,
+    stateFee,
+    realWithTax,
     clearState,
     isCash,
+    realNoTax,
+    dolarWithTax,
   } = useCurrencyContext()
 
   return (
@@ -22,24 +25,31 @@ const ResultCard = () => {
       </button>
       <div className='result-container'>
         <h2>O resultado do cálculo é</h2>
-        <h1>{converted.toFixed(2)}</h1>
+        <h1>{realWithTax}</h1>
       </div>
       <div>
         <p>
-          Compra no {`${isCash ? 'dinheiro' : 'cartão'}`} e taxa de {fee} %
+          Compra no {`${isCash ? 'dinheiro' : 'cartão'}`} e taxa de estado de{' '}
+          {stateFee.toFixed(1)} % e IOF de {`${isCash ? '1,1%' : '6.4%'}`}
         </p>
         <p>Cotação do dólar: $ 1,00 = R$ {currencyValue.toFixed(2)}</p>
+        <div className='info-container'>
+          <p>Total de dólares sem imposto: US$ {inputDolar.toFixed(2)}</p>
+          <p>Total de dólares com imposto: US$ {dolarWithTax.toFixed(2)}</p>
+          <p>Total em reais sem imposto: R$ {realNoTax.toFixed(2)}</p>
+          <p>Total em reais com imposto: {realWithTax}</p>
+        </div>
       </div>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   position: absolute;
   left: 64px;
   top: 250px;
 
-  button {
+  .btn {
     padding: 16px 26px;
     color: var(--clr-darkgray2);
     background: var(--clr-white);
@@ -51,13 +61,13 @@ const Wrapper = styled.div`
         opacity: 1;
       }
     }
-
     span {
       margin-top: 2px;
       padding-right: 10px;
       opacity: 0.6;
     }
   }
+
   .result-container {
     padding: 32px 0;
     h2 {
@@ -69,8 +79,14 @@ const Wrapper = styled.div`
     }
   }
   p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: var(--clr-mediumgray);
+  }
+  .info-container {
+    margin-top: 20px;
+    p {
+      font-size: 10px;
+    }
   }
   @media screen and (max-width: 600px) {
     top: 300px;

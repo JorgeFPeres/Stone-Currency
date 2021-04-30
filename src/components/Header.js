@@ -21,7 +21,7 @@ const Header = () => {
         <h2 className='date'>
           {currentDate} <span>|</span> {currentHour} UTC
         </h2>
-        <p className='morning-star'>
+        <p className='date-text'>
           Dados de câmbio disponibilizados pela Morningstar.
         </p>
       </div>
@@ -29,7 +29,7 @@ const Header = () => {
   )
 }
 
-const Wrapper = styled.main`
+const Wrapper = styled.header`
   position: absolute;
   width: 538px;
   left: 64px;
@@ -37,9 +37,6 @@ const Wrapper = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  span {
-    margin: 0 15px;
-  }
 
   .container-logo {
     height: 81px;
@@ -63,19 +60,22 @@ const Wrapper = styled.main`
   .currency {
     color: var(--clr-green);
   }
-
   .date-container {
     display: flex;
     flex-direction: column;
 
-    .morning-star {
+    .date-text {
       color: var(--clr-mediumgray2);
     }
     .date {
       color: var(--clr-darkgray2);
       margin: 8px 0px;
+      span {
+        margin: 0 15px;
+      }
     }
   }
+
   @media screen and (max-width: 600px) {
      {
       flex-direction: column;

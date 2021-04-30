@@ -49,7 +49,7 @@ p {
   display: flex;
   align-items: center;
   text-transform: capitalize;
-  background: var(--clr-mediumgray2);
+  background: var(--clr-green);
   color: var(--clr-white);
   padding: 16px;
   letter-spacing: 0.8px;
@@ -61,11 +61,7 @@ p {
   border-radius: var(--radius);
   border: 1px solid #008b57;
 }
-.active {
-  background: var(--clr-green);
-}
-.btn:hover,
-active:hover {
+.btn:hover {
   background: var(--clr-darkgreen);
 }
 
