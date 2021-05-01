@@ -57,7 +57,7 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 992px) {
-    article {
+    div {
       display: none;
     }
   }
