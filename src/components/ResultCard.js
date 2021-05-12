@@ -5,9 +5,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 const ResultCard = () => {
   const {
-    inputDolar,
+    dolarNumber,
     currencyValue,
-    stateFee,
+    stateFeeDolar,
     realWithTax,
     clearState,
     isCash,
@@ -30,11 +30,11 @@ const ResultCard = () => {
       <div>
         <p>
           Compra no {`${isCash ? 'dinheiro' : 'cartão'}`} e taxa de estado de{' '}
-          {stateFee.toFixed(1)} % e IOF de {`${isCash ? '1,1%' : '6.4%'}`}
+          {stateFeeDolar.toFixed(1)} % e IOF de {`${isCash ? '1,1%' : '6.4%'}`}
         </p>
         <p>Cotação do dólar: $ 1,00 = R$ {currencyValue.toFixed(2)}</p>
         <div className='info-container'>
-          <p>Total de dólares sem imposto: US$ {inputDolar.toFixed(2)}</p>
+          <p>Total de dólares sem imposto: US$ {dolarNumber.toFixed(2)}</p>
           <p>Total de dólares com imposto: US$ {dolarWithTax.toFixed(2)}</p>
           <p>Total em reais sem imposto: R$ {realNoTax.toFixed(2)}</p>
           <p>Total em reais com imposto: {realWithTax}</p>

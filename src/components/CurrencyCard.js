@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Input from './InputForm'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
@@ -37,11 +36,19 @@ const CurrencyCard = () => {
       <div className='form-container'>
         <div>
           <h2>Dólar</h2>
-          <Input money value={inputDolar} onChange={getDolar} />
+          <InputText
+            value={inputDolar}
+            onChange={(e) => getDolar(e.target.value)}
+            placeholder='$ 0.00'
+          />
         </div>
         <div>
           <h2>Taxa do Estado</h2>
-          <Input value={stateFee} onChange={getFee} />
+          <InputText
+            value={stateFee}
+            onChange={(e) => getFee(e.target.value)}
+            placeholder='% 0.0'
+          />
         </div>
       </div>
       <div>
@@ -117,7 +124,6 @@ const Wrapper = styled.main`
   h1 {
     font-size: 44px;
     color: var(--clr-green);
-    :nextsi ;
   }
   h1 ~ h2 {
     margin-top: 20px;
@@ -125,6 +131,20 @@ const Wrapper = styled.main`
   p {
     margin-top: 5px;
     color: var(--clr-mediumgray);
+  }
+`
+
+export const InputText = styled.input`
+  padding: 15px;
+  margin-right: 1.5rem;
+  margin-top: 3px;
+  width: 168px;
+  height: 56px;
+  border: 1px solid #d7e0eb;
+  border-radius: 4px;
+  filter: var(--shadow);
+  ::placeholder {
+    opacity: 0.5;
   }
 `
 

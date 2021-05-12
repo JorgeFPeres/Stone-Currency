@@ -2,7 +2,7 @@ import Radio from '@material-ui/core/Radio'
 import { green, grey } from '@material-ui/core/colors'
 import { withStyles } from '@material-ui/core/styles'
 
-// Remove the symbol $
+// Remove the letters
 export function transformRawNumber(value) {
   return value.replace(/\D/g, '')
 }
