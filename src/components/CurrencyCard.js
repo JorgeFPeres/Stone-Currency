@@ -19,6 +19,9 @@ const CurrencyCard = () => {
     inputDolar,
     stateFee,
     currencyError,
+    alertDolar,
+    alertTax,
+    taxUpper,
   } = useCurrencyContext()
 
   if (currencyError) {
@@ -41,7 +44,9 @@ const CurrencyCard = () => {
             onChange={(e) => getDolar(e.target.value)}
             placeholder='$ 0.00'
           />
+          {alertDolar && <p className='error'>Por favor informe o valor</p>}
         </div>
+
         <div>
           <h2>Taxa do Estado</h2>
           <InputText
@@ -49,6 +54,8 @@ const CurrencyCard = () => {
             onChange={(e) => getFee(e.target.value)}
             placeholder='% 0.0'
           />
+          {alertTax && <p className='error'>Por favor informe a taxa</p>}
+          {taxUpper && <p className='error'>Insira um valor abaixo de 100%</p>}
         </div>
       </div>
       <div>
@@ -109,6 +116,11 @@ const Wrapper = styled.main`
     span {
       padding: 7px;
     }
+  }
+  .error {
+    font-size: 10px;
+    color: red;
+    margin-left: 5px;
   }
 
   @media screen and (max-width: 600px) {

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useCurrencyContext } from '../context/currency_context'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import { formatPrice } from '../utils/helpers'
 
 const ResultCard = () => {
   const {
@@ -36,7 +37,7 @@ const ResultCard = () => {
         <div className='info-container'>
           <p>Total de dólares sem imposto: US$ {dolarNumber.toFixed(2)}</p>
           <p>Total de dólares com imposto: US$ {dolarWithTax.toFixed(2)}</p>
-          <p>Total em reais sem imposto: R$ {realNoTax.toFixed(2)}</p>
+          <p>Total em reais sem imposto: {formatPrice(realNoTax)}</p>
           <p>Total em reais com imposto: {realWithTax}</p>
         </div>
       </div>

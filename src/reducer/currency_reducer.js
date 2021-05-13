@@ -1,8 +1,4 @@
-import {
-  transformRawNumber,
-  formatPrice,
-  transformNumber,
-} from '../utils/helpers'
+import { transformRawNumber, formatPrice } from '../utils/helpers'
 
 import {
   GET_CURRENCY_ERROR,
@@ -46,15 +42,30 @@ const currency_reducer = (state, action) => {
   }
   if (action.type === CALCULATE_EXCHANGE) {
     const { isCash, dolarNumber, stateFeeDolar, currencyValue } = state
-    if (!dolarNumber || !stateFeeDolar) {
-      alert('Preencha o valor e a taxa e tente novamente!!!')
-      return { ...state, showResults: false }
+    if (stateFeeDolar > 100) {
+      return {
+        ...state,
+        showResults: false,
+        taxUpper: true,
+        alertTax: false,
+        alertDolar: false,
+        truestateFeeDolar: 0,
+      }
     }
-    if (dolarNumber > 10000000 || stateFeeDolar > 100) {
-      alert(
-        'Ensira um valor menor!!! \nLimite dolar: 10.000.000 \nLimite taxa:100%'
-      )
-      return { ...state, showResults: false, dolarNumber: 0, stateFeeDolar: 0 }
+
+    if (!dolarNumber || !stateFeeDolar) {
+      if (!dolarNumber && !stateFeeDolar)
+        return {
+          ...state,
+          showResults: false,
+          alertDolar: true,
+          alertTax: true,
+        }
+      if (!dolarNumber)
+        return { ...state, showResults: false, alertDolar: true }
+      if (!stateFeeDolar) {
+        return { ...state, showResults: false, alertTax: true }
+      }
     } else {
       const dolarWithTax = dolarNumber + dolarNumber * (stateFeeDolar / 100)
       const IOFValue = isCash ? 0.011 : 0.064
@@ -84,6 +95,9 @@ const currency_reducer = (state, action) => {
       showResults: false,
       realNoTax: 0,
       dolarWithTax: 0,
+      alertDolar: false,
+      alertTax: false,
+      taxUpper: false,
     }
   }
 

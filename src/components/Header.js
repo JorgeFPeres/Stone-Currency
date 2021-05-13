@@ -77,14 +77,12 @@ const Wrapper = styled.header`
   }
 
   @media screen and (max-width: 600px) {
-     {
-      flex-direction: column;
-      align-items: flex-start;
-      height: 140px;
-      width: 330px;
-      left: 20px;
-      top: 30px;
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    height: 140px;
+    width: 330px;
+    left: 20px;
+    top: 30px;
   }
 `
 

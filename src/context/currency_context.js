@@ -25,6 +25,9 @@ const initialState = {
   realNoTax: 0,
   dolarWithTax: 0,
   currencyError: false,
+  alertDolar: false,
+  alertTax: false,
+  taxUpper: false,
 }
 
 const CurrencyContext = React.createContext()
